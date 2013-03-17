@@ -1,0 +1,34 @@
+# A sample resource configuration file
+# All options are listed, but not all are required. The optional options 
+# are commented out.
+
+[INFO]
+name: Demo Resource
+#id: demo_resource
+version: 1.00
+proof_path: services/demo/proof
+#adapter: mysql
+#python_path: /python/path
+default_schema: schema_demo
+default_namespace: demo.domain.com
+#date: 2004-10-01
+
+[DATABASE #1]
+db_host: localhost
+db_name: SCHEMA_TEST
+db_user: test
+db_pass: test
+aggregates: Customer,CustomerType,Plan,Property,Service,Language
+Customer: Account,CustomerId,1,|Address,CustomerId,n,AddressType
+Plan:  PlanIXN,PlanId,n,LanguageId
+Service: ServiceIXN,ServiceId,n,LanguageId
+
+#[DATABASE #2]
+#db_host: localhost
+#db_name: SCHEMA_TEST_STORE
+#db_user: test
+#db_pass: test
+#aggregates: Customer,Product,Redro,RedroProduct,RedroStatus
+#Customer: Account,CustomerId,1,|Address,CustomerId,n,AddressType
+#Product: ProductAttribute,ProductId,n,OptionId
+#RedroProduct: RedroProductAttribute,RedroProductId,1,

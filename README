@@ -1,0 +1,17 @@
+README
+======
+
+PROOF (Python Relational Object-Oriented Framework) is a persistent data layer
+designed for python.
+
+The purpose of PROOF is to separate the data processing details from apps
+domain logic. PROOF is an intermediate layer between domain layers and data
+resources like database, files, XML, etc. PROOF converts data resources into
+an object-oriented representation and pertains the relationship between these
+objects. Data resources and data handling are totally hidden from domain layer.
+At the same time, PROOF will provide data source adapters (a separate layer in
+PROOF to maintain data drivers), data process effeciency (repository pattern), 
+data concurrency (aggregate pattern, unit-of-work pattern) and transaction 
+support.
+
+

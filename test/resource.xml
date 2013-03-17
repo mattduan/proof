@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource>
+  <name>PROOF Resource</name>
+  <id>proof_resource</id>
+  <version>1.0</version>
+  <date>2004-05-09</date>
+
+  <proof_path></proof_path>
+  <default_schema>schema1</default_schema>
+  <default_namespace>mydomain1.com</default_namespace>
+
+  <!-- strategy for different resource types -->
+  <strategies>
+    <adapter>static</adapter>
+    <databasemap>static</databasemap>
+    <namespace>static</namespace>
+    <object>static</object>
+    <aggregate>static</aggregate>
+  </strategies>
+
+  <schema name="schema1">
+    <adapter>mysql</adapter>
+
+    <!-- start namespace -->
+    <namespaces>
+      <namespace name="mydomain1.com">
+        <database>database1</database>
+        <host>localhost</host>
+        <username>duan</username>
+        <password>1234</password>
+      </namespace>
+      <namespace name="mydomain2.com">
+        <database>database2</database>
+        <host>localhost</host>
+        <username>duan</username>
+        <password>1234</password>
+      </namespace>
+    </namespaces>
+    <!-- end namespace -->
+    
+    <!-- start tables -->
+    <tables>
+      <table name="Foo">
+        <columns>
+          <column name="Foo_Id">
+            <type>int</type>
+            <size>10</size>
+            <pk>true</pk>
+            <notnull>true</notnull>
+            <fktable>none</fktable>
+            <fkcolumn>none</fkcolumn>
+          </column>
+          <column name="Bar_Id">
+            <type>int</type>
+            <size>8</size>
+            <pk>false</pk>
+            <notnull>true</notnull>
+            <fktable>Bar</fktable>
+            <fkcolumn>Bar_Id</fkcolumn>
+          </column>
+          <column name="Name">
+            <type>varchar</type>
+            <size>25</size>
+            <pk>false</pk>
+            <notnull>true</notnull>
+            <fktable>none</fktable>
+            <fkcolumn>none</fkcolumn>
+          </column>
+        </columns>
+      </table>
+      <table name="Bar">
+        <columns>
+          <column name="Bar_Id">
+            <type>int</type>
+            <size>8</size>
+            <pk>true</pk>
+            <notnull>true</notnull>
+            <fktable>Foo</fktable>
+            <fkcolumn>Bar_Id</fkcolumn>
+          </column>
+          <column name="Name">
+            <type>varchar</type>
+            <size>25</size>
+            <pk>false</pk>
+            <notnull>true</notnull>
+            <fktable>none</fktable>
+            <fkcolumn>none</fkcolumn>
+          </column>
+        </columns>
+      </table>
+    </tables>
+    <!-- end tables -->
+    
+    <!-- start objects -->
+    <objects>
+      <object name="Foo">
+        <module>ddl.myservice.schema1.Foo</module>
+        <class>Foo</class>
+        <factorymodule>ddl.myservice.schema1.FooFactory</factorymodule>
+        <factoryclass>FooFactory</factoryclass>
+      </object>
+      <object name="Bar">
+        <module>ddl.myservice.schema1.Bar</module>
+        <class>Bar</class>
+        <factorymodule>ddl.myservice.schema1.BarFactory</factorymodule>
+        <factoryclass>BarFactory</factoryclass>
+      </object>
+    </objects>
+    <!-- end objects -->
+
+    <!-- start aggregates -->
+    <aggregates>
+      <aggregate name="Foo">
+        <module>ddl.myservice.schema1.FooAggregate</module>
+        <class>FooAggregate</class>
+        <factorymodule>ddl.myservice.schema1.FooAggregateFactory</factorymodule>
+        <factoryclass>FooAggregateFactory</factoryclass>
+        <repositorymodule>ddl.myservice.schema1.FooAggregateRepository</repositorymodule>
+        <repositoryclass>FooAggregateRepository</repositoryclass>
+      </aggregate>
+    </aggregates>
+    <!-- end aggregates -->
+
+  </schema>
+</resource>

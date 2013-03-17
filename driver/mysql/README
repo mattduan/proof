@@ -1,0 +1,7 @@
+README
+======
+
+NOTE: _mysql.so is not included in the repos. It has to be copied over
+from python site-packages after installing MySQLdb in the server.
+
+THIS IS DEPRECATED.
